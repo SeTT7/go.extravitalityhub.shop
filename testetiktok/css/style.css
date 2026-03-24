@@ -2,13 +2,13 @@ body {
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
   margin: 0;
   display: flex;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   justify-content: center;
   user-select: none;
 }
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   overscroll-behavior-y: none;
 }
 * {
@@ -18,10 +18,9 @@ body {
 a[href^="tel"] {
   color: inherit !important;
   text-decoration: none !important;
-  pointer-events: none; /* impede o click */
+  pointer-events: none;
 }
 
-/* Remove estilização de link automático em números de telefone */
 .telefone,
 .telefone a {
   color: #000 !important;
@@ -29,13 +28,11 @@ a[href^="tel"] {
   pointer-events: none;
 }
 
-/* Desabilita detecção automática de telefone em Safari/iOS */
 a[x-apple-data-detectors] {
   color: inherit !important;
   text-decoration: none !important;
 }
 
-/* === regras SPA: controlar visibilidade das screens === */
 .screen {
   display: none;
 }
@@ -43,25 +40,19 @@ a[x-apple-data-detectors] {
   display: block;
 }
 
-/* Quando estiver escondida, marque aria-hidden para leitores */
 .screen[aria-hidden="true"] {
   display: none;
 }
 
 button {
   border: 0;
-  box-shadow: none; /* Remove qualquer sombra */
+  box-shadow: none;
 }
 
-/* Remove o contorno azul/preto que aparece ao clicar */
 button:focus {
   outline: none;
 }
-/* .screen {
-  border-bottom: 4px solid #ddd;
-  padding: 40px 20px;
-  min-height: 100vh;
-} */
+
 .title {
   text-align: center;
   color: #000;
@@ -79,14 +70,11 @@ button:focus {
 }
 #one {
   background-color: #f5f5f5;
-  padding-bottom: 110px; /* Espaço para o sticky popup não cobrir o conteúdo */
+  padding-bottom: 110px;
   padding-left: 12px;
   padding-right: 12px;
   box-sizing: border-box;
 }
-/* ===========================
-   Card do saldo (container)
-   =========================== */
 .saldo {
   padding: 20px;
   border-radius: 8px;
@@ -96,26 +84,22 @@ button:focus {
   max-width: none;
   margin: 0 auto;
   box-sizing: border-box;
-  /* Removido height fixo: agora adapta à altura do conteúdo */
 }
 
-/* Flex wrapper que organiza esquerda (info) e direita (ação) */
 .container-saldo {
   display: flex;
-  align-items: flex-end; /* centraliza verticalmente */
-  justify-content: space-between; /* empurra o botão para a direita */
+  align-items: flex-end;
+  justify-content: space-between;
   gap: 16px;
 }
 
-/* Lado esquerdo: coluna com label e valor */
 .saldo-info {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  min-width: 0; /* evita overflow do texto em flex */
+  min-width: 0;
 }
 
-/* linha com "Seu saldo" e ícone */
 .saldo-label {
   display: flex;
   align-items: center;
@@ -125,19 +109,16 @@ button:focus {
   font-weight: 500;
 }
 
-/* ícone pequeno ao lado do label */
 .p-saldo {
 }
 
-/* valor principal: melhor controle tipográfico */
 .saldo-valor {
   display: flex;
   align-items: baseline;
   gap: 6px;
-  padding: 0; /* removido padding vertical para centralizar */
+  padding: 0;
 }
 
-/* se quiser separar inteiro e decimal (opcional no HTML atual) */
 .valor-int {
   font-size: 28px;
   font-weight: 800;
@@ -150,7 +131,6 @@ button:focus {
   transform: translateY(-2px);
 }
 
-/* Lado direito: botão */
 .saldo-action {
   display: flex;
 }
@@ -181,7 +161,7 @@ button:focus {
   font-weight: 500;
   line-height: normal;
   display: flex;
-  align-items: center; /* vertical centralization */
+  align-items: center;
 }
 .p-bg {
   display: inline-flex;
@@ -261,7 +241,6 @@ button:focus {
   flex-direction: column;
   border-radius: 12px;
   background: #fff;
-  /* flex-wrap: wrap; */
   box-sizing: border-box;
   width: 100%;
   max-width: none;
@@ -274,9 +253,8 @@ button:focus {
 }
 .line {
   width: 100%;
-  height: 1px; /* controla a espessura */
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.1); /* cor bem suave */
-  /* margin: 20px 0; */
+  height: 1px;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
 }
 .entre {
   padding-top: 20px;
@@ -313,7 +291,7 @@ button:focus {
   background: #f1f1f3;
   justify-content: center;
   align-items: center;
-  pointer-events: none; /* Torna o botão não clicável */
+  pointer-events: none;
 }
 .entre-data {
   display: block;
@@ -341,8 +319,6 @@ button:focus {
   line-height: 14px;
   padding: 6px 12px;
 }
-/* day tracker */
-/* Reset básico para garantir que o padding não estoure o tamanho */
 .dia,
 .line-dois {
   margin-top: 20px;
@@ -350,10 +326,9 @@ button:focus {
 }
 .day-tracker * {
   box-sizing: border-box;
-  font-family: "Inter", sans-serif; /* Certifique-se de ter a fonte Inter importada */
+  font-family: "Inter", sans-serif;
 }
 
-/* Container Principal */
 .day-tracker {
   display: flex;
   width: 100%;
@@ -361,7 +336,6 @@ button:focus {
   align-items: center;
 }
 
-/* Coluna do dia individual */
 .day-tracker__item {
   width: 45px;
   display: inline-flex;
@@ -371,7 +345,6 @@ button:focus {
   gap: 8px;
 }
 
-/* Caixa principal do ícone (fundo) */
 .day-tracker__box {
   align-self: stretch;
   height: 45px;
@@ -381,7 +354,6 @@ button:focus {
   border-radius: 8.82px;
 }
 
-/* Conteúdo interno (Moeda + Valor) */
 .day-tracker__content {
   width: 45px;
   position: absolute;
@@ -394,18 +366,16 @@ button:focus {
   gap: 4px;
 }
 
-/* Moeda (Círculo Externo) */
 .day-tracker__coin {
   width: 16px;
   height: 16px;
   position: relative;
   background: #fedc60;
   overflow: hidden;
-  border-radius: 50%; /* 228.34px no original arredondado para 50% */
+  border-radius: 50%;
   border-bottom: 0.46px solid #faa21c;
 }
 
-/* Moeda (Círculo Interno) */
 .day-tracker__coin-inner {
   width: 12.8px;
   height: 12.8px;
@@ -418,7 +388,6 @@ button:focus {
   outline: 0.23px solid #feae0f;
 }
 
-/* Efeito de brilho/sombra na moeda */
 .day-tracker__coin-effect {
   width: 15.77px;
   height: 15.77px;
@@ -430,7 +399,6 @@ button:focus {
   border-radius: 9999px;
 }
 
-/* Letra "P" dentro da moeda */
 .day-tracker__coin-text {
   position: absolute;
   left: 3.43px;
@@ -441,7 +409,6 @@ button:focus {
   text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
 }
 
-/* Texto do valor ("50") */
 .day-tracker__value {
   align-self: stretch;
   text-align: center;
@@ -450,10 +417,9 @@ button:focus {
   font-weight: 600;
 }
 
-/* Overlay (Camada rosa por cima) */
 .day-tracker__overlay {
   width: 45px;
-  height: 45px; /* Forçado altura para cobrir o box */
+  height: 45px;
   padding: 13px;
   position: absolute;
   left: 0px;
@@ -467,7 +433,6 @@ button:focus {
   gap: 10px;
 }
 
-/* Ícone dentro do overlay */
 .day-tracker__icon-wrapper {
   width: 19px;
   height: 19px;
@@ -476,15 +441,8 @@ button:focus {
 }
 
 .day-tracker__icon-shape {
-  /* width: 18.3px;
-  height: 13.32px;
-  position: absolute;
-  left: 0.35px;
-  top: 3.64px;
-  background: #fe2b54; */
 }
 
-/* Texto inferior ("Dia 01") */
 .day-tracker__label {
   align-self: stretch;
   text-align: center;
@@ -507,28 +465,15 @@ button:focus {
   background: #f1f1f1;
   justify-content: center;
   align-items: center;
-  position: relative; /* Cria o contexto de posicionamento */
-  overflow: visible; /* Garante que o SVG possa sair para fora da caixa */
+  position: relative;
+  overflow: visible;
 }
 .assista-tail {
   position: absolute;
-  left: 25px; /* A distância que você pediu */
-  top: 100%; /* Cola exatamente na borda de baixo */
-
-  /* Dica Pro: Sobe 1 pixel para evitar uma linha branca fina entre o balão e o bico */
+  left: 25px;
+  top: 100%;
   margin-top: -1px;
 }
-/* .assista::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 25px;
-  width: 0;
-  height: 0;
-  border-left: 4.5px solid transparent;
-  border-right: 4.5px solid transparent;
-  border-top: 9px solid #f1f1f1;
-} */
 .assista-txt {
   color: #444;
   font-size: 11px;
@@ -537,51 +482,46 @@ button:focus {
   line-height: normal;
   text-align: center;
 }
-/* Container Principal */
 .progress-bar {
-  position: relative; /* Necessário para a linha absoluta funcionar */
+  position: relative;
   display: flex;
-  justify-content: space-between; /* Espalha os itens igualmente */
+  justify-content: space-between;
   align-items: flex-start;
   width: 100%;
-  margin-top: 11px; /* Espaçamento superior */
-  padding: 0 10px; /* Um respiro nas laterais */
+  margin-top: 11px;
+  padding: 0 10px;
   box-sizing: border-box;
 }
 
-/* A Linha Cinza (Track) */
 .progress-bar::before {
   content: "";
   position: absolute;
-  top: 12px; /* Ajuste vertical: metade da altura do ícone (ex: 24px / 2) */
+  top: 12px;
   left: 0;
   right: 0;
-  height: 5px; /* Espessura da linha */
-  background-color: #f1f1f1; /* Cor da linha */
+  height: 5px;
+  background-color: #f1f1f1;
   border-radius: 10px;
-  z-index: 0; /* Fica atrás das moedas */
+  z-index: 0;
 }
 
-/* Cada bloco (Ícone + Texto) */
 .progress-step {
   position: relative;
-  z-index: 1; /* Garante que fique SOBRE a linha */
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px; /* Distância entre a moeda e o texto */
+  gap: 8px;
 }
 
-/* Wrapper do Ícone (Moeda) */
 .step-icon {
-  width: 24px; /* Ajuste o tamanho conforme seu SVG real */
+  width: 24px;
   height: 24px;
-  background-color: #fff; /* IMPORTANTE: Esconde a linha atrás da moeda */
-  border-radius: 50%; /* Garante que o fundo branco seja redondo */
+  background-color: #fff;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Opcional: se o SVG for menor que o wrapper, use padding */
 }
 
 .step-icon img {
@@ -590,7 +530,6 @@ button:focus {
   display: block;
 }
 
-/* Texto dos pontos */
 .step-text {
   color: #a4a4a4;
   font-size: 10px;
@@ -603,13 +542,12 @@ button:focus {
   visibility: hidden;
 }
 .posicao-direita {
-  align-self: flex-end; /* Para flex-direction: column */
-  margin-left: auto; /* Para flex-direction: row */
+  align-self: flex-end;
+  margin-left: auto;
 }
 
-/* Opcional: Faz a setinha (tail) ficar na direita também */
 .posicao-direita .assista-tail {
-  left: auto; /* Desliga o posicionamento esquerdo */
+  left: auto;
 }
 .assista {
   display: flex;
@@ -617,9 +555,7 @@ button:focus {
 .taildois {
   position: absolute;
   right: 39px;
-  top: 100%; /* Cola exatamente na borda de baixo */
-
-  /* Dica Pro: Sobe 1 pixel para evitar uma linha branca fina entre o balão e o bico */
+  top: 100%;
   margin-top: -1px;
 }
 .obtem-txt {
@@ -696,9 +632,9 @@ button:focus {
 }
 .timer-clock {
   gap: 4px;
-  display: flex; /* 1. Transforma em um container flexível */
-  align-items: center; /* 2. Alinha todos os filhos (caixas E separadores) verticalmente */
-  justify-content: center; /* 3. Alinha horizontalmente no centro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .timer-box {
   display: flex;
@@ -727,21 +663,19 @@ button:focus {
   background: #fe2b54;
   border: 0;
   display: flex;
-  margin: 12px auto 0 auto; /* adiciona espaçamento acima e centraliza */
+  margin: 12px auto 0 auto;
   cursor: pointer;
 }
 
-/* Botão dentro do popup deve respeitar o padding-bottom */
 .popup > .btn-obrigado {
   margin-bottom: 0;
-  margin-top: auto; /* empurra para baixo se necessário */
+  margin-top: auto;
 }
 .saldo-dois {
   width: 100%;
   height: 130px;
   overflow: hidden;
   border-radius: 10px;
-  /* border-bottom: 1px dashed #303030; */
   flex-shrink: 0;
   background: #000;
   box-sizing: border-box;
@@ -858,15 +792,12 @@ button:focus {
   gap: 16px;
   display: flex;
   align-items: center;
-  gap: 6px; /* espaçamento entre itens */
-  /* opcional: evitar quebra */
-  /* flex-wrap: nowrap; */
+  gap: 6px;
   border-bottom: 1px solid #e2e2e4;
   padding-bottom: 5px;
   margin-bottom: 12px;
 }
 
-/* garante que o texto e os ícones internos fiquem em linha e centrados */
 .transferencia-txt {
   display: inline-flex;
   align-items: center;
@@ -877,39 +808,32 @@ button:focus {
 }
 
 .widget-container {
-  /* Define uma largura para o container principal */
   margin-top: 21px;
 }
 
 .botoes-row {
-  display: flex; /* Alinha os botões em linha */
-  gap: 8px; /* Espaço entre os botões */
-  margin-bottom: 10px; /* Espaço abaixo da linha de botões */
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 .btn-valor {
-  flex: 1; /* Faz os botões dividirem o espaço igualmente */
-
-  /* Cor de fundo cinza claro */
+  flex: 1;
   background-color: #f0f2f5;
-
-  /* Borda transparente para evitar que o layout "pule" ao adicionar a borda ativa */
   border: 1.5px solid transparent;
-
-  border-radius: 6px; /* Cantos arredondados */
-  padding: 12px 0; /* Espaçamento interno (vertical, horizontal) */
+  border-radius: 6px;
+  padding: 12px 0;
   font-size: 16px;
   font-weight: bold;
-  color: #333; /* Cor do texto (escuro) */
+  color: #333;
   cursor: pointer;
-  transition: all 0.2s ease; /* Efeito de transição suave */
+  transition: all 0.2s ease;
 }
 
-/* Estilo do botão ativo (selecionado) */
 .btn-valor.btn-active {
-  background-color: #fff6f7; /* Fundo rosa bem claro */
-  border-color: #f84d63; /* Cor da borda rosa/vermelho */
-  color: #f84d63; /* Cor do texto rosa/vermelho */
+  background-color: #fff6f7;
+  border-color: #f84d63;
+  color: #f84d63;
 }
 .botoes-row > .btn-valor {
   color: #000;
@@ -930,13 +854,13 @@ button:focus {
   box-sizing: border-box;
   width: 100%;
   height: 50px;
-  background-color: #f0f2f5; /* Mesmo cinza dos botões */
-  border-radius: 8px; /* Mesmos cantos arredondados */
+  background-color: #f0f2f5;
+  border-radius: 8px;
   text-align: center;
-  font-size: 16px; /* Fonte maior */
+  font-size: 16px;
   font-weight: 700;
   padding: 10px;
-  color: #000; /* Cor do texto */
+  color: #000;
 }
 .botoes-row-sacar {
   margin-bottom: 8px;
@@ -978,9 +902,8 @@ button:focus {
   line-height: normal;
 }
 
-/* Inverte apenas quando houver a flor dentro do bloco de saque */
 .saldo-sacar .container-saldo {
-  align-items: center; /* centra verticalmente texto e imagem */
+  align-items: center;
 }
 .flor {
   width: 82px;
@@ -990,13 +913,13 @@ button:focus {
   margin-right: -20px;
 }
 .saldo-sacar .flor {
-  order: 2; /* manda a imagem para o fim do flex container (direita) */
+  order: 2;
   align-self: center;
-  margin-left: -30px; /* espaço entre texto e imagem */
-  flex-shrink: 0; /* evita que a imagem encolha */
+  margin-left: -30px;
+  flex-shrink: 0;
 }
 .saldo-sacar .obtenha-title {
-  order: 1; /* garante que o texto venha antes da imagem */
+  order: 1;
 }
 .btn-sacar-indisponivel {
   display: flex;
@@ -1009,8 +932,8 @@ button:focus {
   align-items: center;
   gap: 10px;
   cursor: not-allowed;
-  pointer-events: none; /* 🔥 evita clique */
-  opacity: 0.6; /* deixa visualmente bloqueado */
+  pointer-events: none;
+  opacity: 0.6;
 }
 .btn-indis {
   color: #d4d4d4;
@@ -1053,7 +976,6 @@ button:focus {
   margin: 0 auto;
   box-sizing: border-box;
   background-color: #fefefe;
-  /* border-radius: 10px 10px 0 0; */
   border-radius: 10px;
   overflow: hidden;
 }
@@ -1061,8 +983,6 @@ button:focus {
 #six .saque-popup {
   height: auto !important;
   min-height: 300px;
-}
-#four {
 }
 #four a {
   text-decoration: none;
@@ -1126,24 +1046,21 @@ button:focus {
   margin-top: 8px;
 }
 .pix-arrow {
-  margin-left: auto; /* empurra para a direita */
-  align-self: flex-start; /* cola no topo do container flex */
-  /* já tem width/height, ajuste se precisar */
+  margin-left: auto;
+  align-self: flex-start;
   width: 25px;
   height: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
-} /* Define uma fonte base e um fundo para melhor visualização */
+}
 
-/* O contêiner principal do nosso formulário */
 .form-container {
   box-sizing: border-box;
   padding: 20px;
   background-color: #ffffff;
 }
 
-/* Espaçamento entre os grupos de campos */
 .form-group {
   margin-bottom: 24px;
 }
@@ -1151,37 +1068,31 @@ button:focus {
   margin-bottom: 0;
 }
 
-/* Estilo dos rótulos (Nome, Chave PIX) */
 .field-label {
   font-size: 16px;
-  font-weight: 600; /* Um "negrito" suave */
-  color: #1c1e21; /* Cor preta/cinza escuro */
+  font-weight: 600;
+  color: #1c1e21;
   display: block;
 }
 
-/* Estilo do campo de input (Nome completo) */
 input[type="text"] {
   width: 100%;
-  border: none; /* Remove todas as bordas */
-  border-bottom: 1px solid #ddd; /* Adiciona apenas a linha inferior */
+  border: none;
+  border-bottom: 1px solid #ddd;
   font-size: 16px;
-
-  background-color: transparent; /* Fundo transparente */
+  background-color: transparent;
 }
 
-/* Cor do texto do placeholder */
 input[type="text"]::placeholder {
   color: #999;
   opacity: 1;
 }
 
-/* Remove a borda azul padrão ao focar no input */
 input[type="text"]:focus {
   outline: none;
-  border-bottom-color: #555; /* Pode mudar a cor da linha ao focar */
+  border-bottom-color: #555;
 }
 
-/* Estilo do 'botão' seletor de Chave PIX */
 .pix-selector {
   margin-top: 20px;
   padding-bottom: 16px;
@@ -1190,27 +1101,21 @@ input[type="text"]:focus {
   border-bottom: 1px solid #ddd;
   font-size: 16px;
   background-color: transparent;
-
-  /* Mágica do layout: alinha o texto e a seta */
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  cursor: pointer; /* Muda o mouse para 'mãozinha' */
+  cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
-/* Efeito suave ao passar o mouse */
 .pix-selector:hover {
   background-color: #f9f9f9;
 }
 
-/* Texto 'Escolha o tipo...' */
 .pix-selector .placeholder-text {
-  color: #999; /* Mesma cor do placeholder */
+  color: #999;
 }
 
-/* A seta '>' */
 .pix-selector .arrow {
   color: #999;
   font-weight: bold;
@@ -1236,7 +1141,7 @@ input.nome-completo,
   line-height: normal;
 }
 .arrow-tois {
-  margin-left: auto; /* empurra para a direita */
+  margin-left: auto;
   align-self: flex-start;
   display: flex;
   justify-content: center;
@@ -1249,59 +1154,42 @@ input.nome-completo,
   margin-top: -5px;
 }
 
-/* Botão dentro da #five deve ter width 100% */
 #five .btn-vincular,
 #five .btn-sacar-dois {
   width: 100%;
   max-width: 100%;
-} /* O contêiner principal para a lista de seleção */
+}
 .selection-container {
   width: 100%;
   max-width: 400px;
   background-color: #ffffff;
   border-radius: 8px;
-  overflow: hidden; /* Garante que as bordas fiquem bonitas */
+  overflow: hidden;
 }
 
-/* Cada linha de opção */
 .option-row {
-  /* Define o "container" para nossa linha falsa */
   position: relative;
 }
 
-/* "Desenha" a linha falsa como um elemento ::after */
 .option-row::after {
   content: "";
   position: absolute;
-  bottom: 0; /* Alinha na parte de baixo */
+  bottom: 0;
   height: 1px;
-  background-color: #ddd; /* A cor da sua linha */
-
-  /* A MÁGICA: Define o recuo de 20px em cada lado */
+  background-color: #ddd;
   left: 20px;
   right: 20px;
 }
 
-/* Esconde a linha falsa do último item da lista */
-.option-row:last-child::after {
-  /* display: none; */
-}
-/* O 'label' é o nosso contêiner flexível */
 .option-row label {
   display: flex;
-  justify-content: space-between; /* Joga o texto para a esquerda e o rádio para a direita */
+  justify-content: space-between;
   align-items: center;
   padding: 20px 20px 0px 20px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  /* border-bottom: 1px solid #ddd; */
 }
 
-.option-row label:hover {
-  /* background-color: #f9f9f9; */
-}
-
-/* O texto (CPF, E-mail, etc.) */
 .option-text {
   color: #000;
   font-size: 14px;
@@ -1310,41 +1198,32 @@ input.nome-completo,
   line-height: normal;
 }
 
-/* 1. ESCONDEMOS O RÁDIO ORIGINAL */
 .option-row input[type="radio"] {
   display: none;
 }
 
-/* 2. CRIAMOS O NOSSO RÁDIO FALSO (O CÍRCULO) */
 .custom-radio {
   display: block;
   width: 20px;
   height: 20px;
-  border-radius: 50%; /* Deixa redondo */
-
-  /* Estilo "Não selecionado" (borda cinza, fundo branco) */
+  border-radius: 50%;
   border: 2px solid #e0e0e0;
   background-color: #fff;
   box-sizing: border-box;
-  transition: all 0.2s ease-in-out; /* Animação suave */
+  transition: all 0.2s ease-in-out;
 }
 
-/* 3. A MÁGICA: MUDAMOS O ESTILO DO RÁDIO FALSO QUANDO O ORIGINAL ESTÁ :checked */
 .option-row input[type="radio"]:checked + .custom-radio {
-  border-color: #fff; /* Borda rosa */
-  background-color: #ff2657; /* <--- Mude aqui para a cor rosa */
-  box-shadow: 0 0 0 1px #ff2657; /* Brilho externo */
+  border-color: #fff;
+  background-color: #ff2657;
+  box-shadow: 0 0 0 1px #ff2657;
   box-sizing: border-box;
   border-width: 2.5px;
 }
 .option-row label {
   padding-bottom: 13px;
 }
-/* =========================================
-   Estilos para a nova tela de loading (#seven)
-   ========================================= */
 
-/* Preloader fake (sem animação de spin) */
 #preloader-fake {
   position: fixed;
   top: 0;
@@ -1356,12 +1235,11 @@ input.nome-completo,
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  visibility: visible; /* Inicia visível */
-  opacity: 1; /* Inicia com opacidade total */
-  transition: opacity 0.5s ease, visibility 0.5s ease; /* Animação para ocultar */
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-/* Estilo da página de carregamento após o preloader fake */
 #loading-page {
   position: fixed;
   top: 0;
@@ -1371,18 +1249,17 @@ input.nome-completo,
   background-color: #ffffff;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Alinha os itens ao fundo */
-  align-items: flex-start; /* Alinha os itens à esquerda */
+  justify-content: flex-end;
+  align-items: flex-start;
   padding-left: 20px;
   padding-right: 20px;
   z-index: 9998;
-  visibility: hidden; /* Inicialmente oculto */
-  opacity: 1; /* Opacidade total no início */
-  transition: opacity 1s ease, visibility 1s ease; /* Animação de fade out */
+  visibility: hidden;
+  opacity: 1;
+  transition: opacity 1s ease, visibility 1s ease;
   box-sizing: border-box;
 }
 
-/* Barra de progresso */
 .progress-bar-loading {
   width: 100%;
   height: 8px;
@@ -1398,33 +1275,30 @@ input.nome-completo,
 
 .progress-bar-fill {
   height: 100%;
-  width: 0%; /* Começa com 0% */
+  width: 0%;
   background-color: #fe2b54;
-  transition: width 2s ease; /* Animação de transição suave para a largura da barra */
+  transition: width 2s ease;
 }
 
-/* Status text */
 .status-text {
   font-family: "Inter", sans-serif;
-  font-weight: 900; /* Fonte mais grossa */
+  font-weight: 900;
   font-size: 28px;
   color: black;
   margin-top: 48px;
   width: 100%;
-  text-align: left; /* Alinhado à esquerda */
-  transform: translateY(20px); /* Começa ligeiramente abaixo */
-  opacity: 0; /* Começa invisível */
-  transition: transform 0.5s ease, opacity 0.5s ease; /* Animação de deslizar para cima */
+  text-align: left;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
   min-width: 0;
   flex-shrink: 1;
 }
 
-/* Quando #seven estiver ativo, permite overflow hidden no body */
 body.loading-active {
   overflow: hidden;
 }
 
-/* Garante que #seven ocupe toda a tela */
 #seven {
   position: fixed;
   top: 0;
@@ -1433,22 +1307,24 @@ body.loading-active {
   height: 100%;
   background-color: #ffffff;
   z-index: 10000;
+  display: flex;
+  flex-direction: column;
 }
 
-/* =========================================
-   Estilos para a página de confirmação (#nine)
-   ========================================= */
+#seven[aria-hidden="true"] {
+  display: none;
+}
+
 #nine {
   background-color: #ffffff;
   padding: 0;
   overflow-y: auto;
-  height: 100dvh; /* Use dynamic viewport height */
+  height: 100dvh;
   min-height: 100dvh;
   box-sizing: border-box;
   position: relative;
 }
 
-/* Garante que #nine comece no topo quando exibida */
 #nine.is-active {
   scroll-behavior: auto;
 }
@@ -1462,7 +1338,7 @@ body.loading-active {
   box-sizing: border-box;
   padding-bottom: 0;
   width: 100%;
-  overflow-x: hidden; /* Previne overflow horizontal */
+  overflow-x: hidden;
 }
 
 .confirmation-section {
@@ -1496,7 +1372,7 @@ body.loading-active {
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  overflow: hidden; /* Previne que filhos ultrapassem */
+  overflow: hidden;
 }
 
 .confirmation-balance {
@@ -1770,7 +1646,6 @@ body.loading-active {
 }
 .timer-wrapper {
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-  /* Cor de fundo cinza, como na imagem */
   background-color: #e6e6e6;
   border-radius: 4px;
   height: 36px;
@@ -1800,15 +1675,15 @@ body.loading-active {
   position: fixed;
   bottom: 0;
   left: 0;
-  right: 0; /* Garante que o margin: 0 auto funcione para centralizar */
-  margin: 0 auto; /* Centraliza no desktop */
+  right: 0;
+  margin: 0 auto;
   width: 100%;
-  max-width: 350px; /* Mesma largura do container principal (.saldo) */
+  max-width: 350px;
   z-index: 99;
-  transform: translateY(100%); /* Escondido por padrão */
+  transform: translateY(100%);
   transition: transform 0.3s ease-in-out;
   display: block;
-  pointer-events: none; /* Evita bloquear cliques quando escondido (se transform falhar) */
+  pointer-events: none;
 }
 
 .sticky-popup.is-visible {
@@ -1819,32 +1694,30 @@ body.loading-active {
 .saldo-popup,
 .expira-em-popup {
   background-color: white;
-  margin: 0 auto; /* Centraliza o conteúdo se tiver max-width */
-  max-width: 100%; /* Garante que ocupe a largura */
+  margin: 0 auto;
+  max-width: 100%;
 }
 
 .saldo-popup {
   border-radius: 0;
-  padding-bottom: 20px; /* Espaço extra para segurança em mobile */
+  padding-bottom: 20px;
 }
 
 .expira-em-popup {
   border-radius: 8px 8px 0 0;
-  width: fit-content; /* O timer só ocupa o necessário */
-  padding: 0 15px; /* Padding lateral */
-  margin: 0 auto; /* Centraliza horizontalmente (para o popup #two) */
+  width: fit-content;
+  padding: 0 15px;
+  margin: 0 auto;
 }
 
-/* Ajuste específico para o sticky popup (#popup-um) */
 #popup-um .expira-em-popup {
-  width: 100%; /* Ocupa 100% da largura */
+  width: 100%;
   display: flex;
-  justify-content: center; /* Centraliza o conteúdo interno */
-  margin: 0; /* Remove margem auto pois width é 100% */
+  justify-content: center;
+  margin: 0;
   box-sizing: border-box;
 }
-.line-expira {
-}
+
 .expira-em-popup {
   --display: flex;
   --min-height: 117px;
@@ -1893,20 +1766,18 @@ body.loading-active {
   background: none;
 }
 
-/* === modal popup (section id="two") === */
 .screen.is-modal {
   position: fixed;
-  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.45); /* overlay */
+  background: rgba(0, 0, 0, 0.45);
   padding: 1.5rem;
   box-sizing: border-box;
 }
 
-/* Conteúdo interno do modal — adapte conforme seu HTML dentro da section#two */
 .screen.is-modal .modal-inner {
   max-width: 720px;
   width: 100%;
@@ -1918,17 +1789,14 @@ body.loading-active {
   position: relative;
 }
 
-/* Se já existir .is-active, forçamos display (caso a regra .screen {display:none} esconda tudo) */
 .screen.is-modal.is-active {
   display: flex;
 }
 
-/* Evita scroll do body quando modal aberto */
 body.modal-open {
   overflow: hidden;
 }
 
-/* Pequeno ajuste para o clique "fora" dentro do modal: garantir que o conteúdo interno não propague clique */
 .screen.is-modal .modal-inner * {
   pointer-events: auto;
 }
@@ -1942,22 +1810,20 @@ button:hover {
   cursor: pointer;
 }
 
-/* sera */
-/* sera */
 .modal-screen {
   position: fixed;
-  inset: 0; /* ocupa a tela inteira */
+  inset: 0;
   background: rgba(0, 0, 0, 0.45);
-  display: none; /* começa escondida */
+  display: none;
   align-items: center;
   justify-content: center;
   z-index: 9999;
 }
 
 .modal-screen.is-active {
-  display: flex; /* aparece como popup */
+  display: flex;
 }
-/* === modal popup #four — colado na parte inferior, full width === */
+
 #four.is-modal,
 #four.is-modal.is-active {
   position: fixed;
@@ -1965,18 +1831,18 @@ button:hover {
   z-index: 9999;
   display: flex;
   justify-content: center;
-  align-items: flex-end; /* Alinha na parte inferior */
+  align-items: flex-end;
   background: rgba(0, 0, 0, 0.45);
-  padding: 0; /* Remove padding para full width */
+  padding: 0;
   box-sizing: border-box;
 }
-/* garante que o conteúdo do modal continue acima do overlay */
+
 #four .modal-inner {
   position: relative;
   z-index: 10000;
-  width: 100%; /* Full width */
-  max-width: 100%; /* Remove limite de largura */
-  border-radius: 12px 12px 0 0; /* Sem border-radius bottom */
+  width: 100%;
+  max-width: 100%;
+  border-radius: 12px 12px 0 0;
   margin: 0;
   padding: 1.5rem;
   background: #fff;
@@ -1986,85 +1852,78 @@ button:hover {
   font-weight: bold;
 }
 
-/* transforma sections com class .modal em overlay */
 .modal {
   position: fixed;
-  inset: 0; /* top:0; right:0; bottom:0; left:0 */
-  display: none; /* escondido por padrão */
+  inset: 0;
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  pointer-events: none; /* evita interação quando fechado */
+  pointer-events: none;
 }
 
-/* quando o modal for ativado pelo JS */
 .modal.is-modal.is-active,
 .modal.is-active.is-modal {
   display: flex;
   pointer-events: auto;
-  background: rgba(0, 0, 0, 0.55); /* escurece o fundo */
-  backdrop-filter: blur(6px) saturate(120%); /* opcional: desfoque do fundo */
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px) saturate(120%);
   -webkit-backdrop-filter: blur(6px) saturate(120%);
 }
 
-/* #four usa o mesmo estilo do popup inicial #two (sem blur) */
 #four.is-modal.is-active,
 #four.is-active.is-modal {
-  background: rgba(0, 0, 0, 0.45); /* mesmo overlay do popup #two */
-  backdrop-filter: none; /* remove blur */
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
 
-/* === modal popup #five — colado na parte inferior, full width === */
 #five.is-modal,
 #five.is-modal.is-active {
   position: fixed;
   inset: 0;
-  z-index: 10001; /* maior que #four (9999) para ficar por cima */
+  z-index: 10001;
   display: flex;
   justify-content: center;
-  align-items: flex-end; /* Alinha na parte inferior */
-  background: transparent; /* Remove overlay para não escurecer mais */
-  padding: 0; /* Remove padding para full width */
+  align-items: flex-end;
+  background: transparent;
+  padding: 0;
   box-sizing: border-box;
 }
 
-/* garante que o conteúdo do modal #five continue acima do overlay */
 #five .modal-inner {
   position: relative;
   z-index: 10002;
-  max-width: 100%; /* Full width */
+  max-width: 100%;
   width: 100%;
   background: #fff;
-  border-radius: 12px 12px 0 0; /* Sem border-radius bottom */
+  border-radius: 12px 12px 0 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   padding: 1.5rem;
   margin: 0;
   box-sizing: border-box;
 }
 
-/* === modal popup #six — colado na parte inferior, full width === */
 #six.is-modal,
 #six.is-modal.is-active {
   position: fixed;
   inset: 0;
-  z-index: 10003; /* maior que #five (10001) para ficar por cima */
+  z-index: 10003;
   display: flex;
   justify-content: center;
-  align-items: flex-end; /* Alinha na parte inferior */
-  background: transparent; /* Remove overlay para não escurecer mais */
-  padding: 0; /* Remove padding para full width */
+  align-items: flex-end;
+  background: transparent;
+  padding: 0;
   box-sizing: border-box;
 }
 
-/* garante que o conteúdo do modal #six continue acima do overlay */
 #six .modal-inner {
   position: relative;
   z-index: 10004;
-  max-width: 100%; /* Full width */
+  max-width: 100%;
   width: 100%;
   background: #fff;
-  border-radius: 12px 12px 0 0; /* Sem border-radius bottom */
+  border-radius: 12px 12px 0 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   padding: 20px;
   margin: 0;
@@ -2076,7 +1935,6 @@ button:hover {
   justify-content: center;
 }
 
-/* Ajusta o saque-popup dentro do #six para estar centralizado */
 #six .saque-popup {
   width: 100%;
   max-width: 100%;
@@ -2084,18 +1942,15 @@ button:hover {
   padding: 0;
 }
 
-/* Ajusta o selection-container dentro do #six */
 #six .selection-container {
   width: 100%;
   max-width: 100%;
 }
 
-/* pix-selector com data-open-modal deve ter cursor pointer */
 .pix-selector[data-open-modal] {
   cursor: pointer;
 }
 
-/* garante que o conteúdo do modal fique acima do overlay */
 .modal .modal-inner {
   position: relative;
   z-index: 10000;
@@ -2114,7 +1969,7 @@ button:hover {
   font-weight: 700;
   line-height: normal;
 }
-/* === Button Feedback (Hover/Active) === */
+
 .btn-sacar,
 .btn-obrigado,
 .btn-sacar-dois,
@@ -2137,13 +1992,11 @@ button:hover {
   opacity: 0.9;
 }
 
-/* === Media Query para Desktop === */
 @media (min-width: 768px) {
-  /* Popups no desktop têm max-width igual ao conteúdo principal */
   #four .modal-inner,
   #five .modal-inner,
   #six .modal-inner {
-    max-width: 350px; /* Mesma largura do .saldo e .bloco-dois */
+    max-width: 350px;
     width: 100%;
   }
 
@@ -2223,99 +2076,67 @@ button.btn-obrigado.btn-sacar-dois.btn-sacar-indisponivel:focus {
   height: 148px;
 }
 
-/* =========================================
-   Novos estilos para validação de Chave PIX
-   ========================================= */
-
-/* Estado desabilitado do input */
-/* Estado desabilitado do input */
 .input-disabled {
-  background-color: transparent !important; /* Fundo transparente para igualar aos outros */
+  background-color: transparent !important;
   cursor: not-allowed;
-  opacity: 1; /* Opacidade normal para não parecer diferente */
+  opacity: 1;
 }
 
-/* Padronização dos inputs e linhas */
 input.nome-completo,
 #pix-key-input,
 .pix-selector {
   width: 100% !important;
   border: none;
-  border-bottom: 1px solid #e5e5e5 !important; /* Linha padrão */
-  border-radius: 0 !important; /* Remove arredondamento da linha */
-  padding-left: 0 !important; /* Remove recuo esquerdo */
+  border-bottom: 1px solid #e5e5e5 !important;
+  border-radius: 0 !important;
+  padding-left: 0 !important;
   padding-right: 0 !important;
   background: transparent !important;
   box-shadow: none !important;
   margin-left: 0 !important;
 }
 
-/* Remove padding extra do wrapper se houver */
 #pix-key-wrapper {
   padding: 0 !important;
   margin: 0 !important;
 }
 
-/* Wrapper para capturar clique no input disabled */
 .input-wrapper-disabled {
   position: relative;
   width: 100%;
 }
 
-/* Estado de erro (borda vermelha) 
-.input-error {
-  border: 1px solid #fe2b54 !important; 
-  transition: border-color 0.2s ease;
-}
-*/
-/* Animação de tremor (shake) */
 @keyframes shake {
-  0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-5px);
-  }
-  50% {
-    transform: translateX(5px);
-  }
-  75% {
-    transform: translateX(-5px);
-  }
-  100% {
-    transform: translateX(0);
-  }
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
 }
 
 .shake-animation {
   animation: shake 0.4s ease-in-out;
 }
 
-/* Botão desabilitado */
-/* Botão desabilitado */
 .btn-disabled {
   opacity: 0.5;
-  /* pointer-events: none; removido para permitir clique e validação */
   filter: grayscale(100%);
   cursor: not-allowed;
 }
 
-/* Ajuste de padding interno para o erro não colar no texto */
 .input-error {
   padding: 10px !important;
-  box-sizing: border-box !important; /* Garante que o padding não aumente o tamanho total */
+  box-sizing: border-box !important;
 }
 
-/* Remove hover/active do botão Enviar PIX especificamente */
 #btn-enviar-pix:hover,
 #btn-enviar-pix:active,
 #btn-enviar-pix:focus {
   transform: none !important;
   opacity: 1 !important;
-  filter: none !important; /* Remove alteração de cor se houver */
+  filter: none !important;
 }
 
-/* Mantém o estilo disabled se estiver com a classe */
 #btn-enviar-pix.btn-disabled {
   opacity: 0.5 !important;
   filter: grayscale(100%) !important;
@@ -2334,11 +2155,6 @@ input.nome-completo,
   width: 70px;
 }
 
-/* =========================================
-   Novos Estilos para a tela de loading (#seven)
-   ========================================= */
-
-/* Header centralizado */
 .loading-header {
   display: flex;
   justify-content: center;
@@ -2356,7 +2172,7 @@ input.nome-completo,
 }
 
 .loading-logo-img {
-  width: 40px;
+  width: 96px;
   height: 40px;
   object-fit: contain;
 }
@@ -2368,7 +2184,6 @@ input.nome-completo,
   color: #333;
 }
 
-/* Conte�do principal */
 .loading-main-content {
   flex: 1;
   display: flex;
@@ -2396,7 +2211,6 @@ input.nome-completo,
   font-weight: 500;
 }
 
-/* Barra de carregamento fluida */
 .new-progress-track {
   width: 100%;
   height: 6px;
@@ -2433,12 +2247,8 @@ input.nome-completo,
 }
 
 @keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .new-progress-track::after {
@@ -2459,16 +2269,10 @@ input.nome-completo,
 }
 
 @keyframes pulse {
-  0%,
-  100% {
-    opacity: 0.3;
-  }
-  50% {
-    opacity: 0.7;
-  }
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
 }
 
-/* Responsividade */
 @media (max-width: 480px) {
   .loading-header {
     padding: 1.5rem;
@@ -2494,64 +2298,17 @@ input.nome-completo,
   }
 }
 
-/* Garante que #seven ocupe toda a tela e tenha fundo branco */
-#seven {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  z-index: 10000;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Oculta quando n�o ativo (j� tratado pela classe .screen, mas refor�ando) */
-#seven[aria-hidden="true"] {
-  display: none;
-}
-.loading-logo-img {
-  width: 96px;
-}
-
-/* =========================================
-   Animação de Bounce (Pular/Quicar) - Botão Sacar
-   ========================================= */
-
 @keyframes bounce-attention {
-  /* Período de descanso (0% - 60%) */
-  0%, 60% {
-    transform: translateY(0);
-  }
-  /* Pula pra cima */
-  65% {
-    transform: translateY(-14px);
-  }
-  /* Cai e quica 1 */
-  70% {
-    transform: translateY(0);
-  }
-  /* Quique 2 - menor */
-  75% {
-    transform: translateY(-8px);
-  }
-  /* Cai */
-  80% {
-    transform: translateY(0);
-  }
-  /* Quique 3 - bem pequeno */
-  85% {
-    transform: translateY(-4px);
-  }
-  /* Volta ao normal */
-  90%, 100% {
-    transform: translateY(0);
-  }
+  0%, 60% { transform: translateY(0); }
+  65% { transform: translateY(-14px); }
+  70% { transform: translateY(0); }
+  75% { transform: translateY(-8px); }
+  80% { transform: translateY(0); }
+  85% { transform: translateY(-4px); }
+  90%, 100% { transform: translateY(0); }
 }
 
-/* Aplica a animação nos botões de sacar com delay inicial */
 .btn-sacar {
   animation: bounce-attention 2.5s ease-in-out infinite;
-  animation-delay: 2s; /* Delay inicial antes de começar */
+  animation-delay: 2s;
 }
