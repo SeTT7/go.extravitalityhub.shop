@@ -34,21 +34,13 @@
   </div>
 
   <script>
-    // Dispara o POST automaticamente após 800ms
     setTimeout(() => {
-      fetch("https://SEU-WORKER.workers.dev", {
-        method: "POST"
-      })
-      .then(response => {
-        // Pega o header Location da resposta do worker
-        const location = response.headers.get("location") || response.url;
-        window.location.href = location;
-      })
-      .catch(() => {
-        // Fallback silencioso
-        window.location.href = "/erro";
-      });
-    }, 800); // milissegundos de delay
+      fetch("https://SEU-WORKER.workers.dev", { method: "POST" })
+        .then(r => r.json())
+        .then(data => {
+          window.location.href = data.url;
+        });
+    }, 800);
   </script>
 </body>
 </html>
