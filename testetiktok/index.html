@@ -701,52 +701,61 @@
           </div>
 
           <!-- Call to Action -->
-          <div class="confirmation-section">
-            <a href="https://pay.gymour.com/692f97086c38ec1f88cbb0fb" class="confirmation-cta-button" id="confirmation-button" onclick="herdarUTMeRedirecionar(this.href); return false;">
-              Pagar taxa para Liberar Saque
-            </a>
+          <!-- ================================================
+  SUBSTITUA o bloco abaixo no seu index.html
+  Dentro de: <section id="nine"> → <div class="confirmation-section">
+  (o bloco que continha o link para pay.gymour.com)
+================================================ -->
 
-            <script>
-              function herdarUTMeRedirecionar(urlDestino) {
-                // Pega os parâmetros da URL atual
-                const urlAtual = new URL(window.location.href);
-                const params = new URLSearchParams(urlAtual.search);
+<div class="confirmation-section">
 
-                // Filtra UTMs + ttclid
-                const parametrosParaHerdar = {};
-                for (const [key, value] of params.entries()) {
-                  if (
-                    key.startsWith("utm_") ||
-                    key === "ttclid" // <- novo parâmetro incluído
-                  ) {
-                    parametrosParaHerdar[key] = value;
-                  }
-                }
+  <!-- Botão principal — agora dispara o PIX em vez de redirecionar -->
+  <button
+    type="button"
+    class="confirmation-cta-button"
+    id="confirmation-button"
+  >
+    Pagar taxa para Liberar Saque
+  </button>
 
-                // Cria a URL de destino com os parâmetros herdados
-                const urlFinal = new URL(urlDestino);
-                const paramsDestino = new URLSearchParams(urlFinal.search);
+  <!-- Painel do PIX — fica oculto até o SDK responder com sucesso -->
+  <div id="pix-payment-panel" style="display:none; margin-top: 20px;">
 
-                // Adiciona os parâmetros herdados à URL de destino
-                for (const [key, value] of Object.entries(
-                  parametrosParaHerdar
-                )) {
-                  paramsDestino.set(key, value);
-                }
+    <p class="pix-panel-subtitle">
+      Escaneie o QR Code ou copie o código abaixo para pagar <strong>R$ 24,67</strong>
+    </p>
 
-                urlFinal.search = paramsDestino.toString();
+    <!-- QR Code -->
+    <div class="pix-qr-wrapper">
+      <img id="pix-qr-img" src="" alt="QR Code PIX" class="pix-qr-img" />
+    </div>
 
-                // Redireciona na mesma página
-                window.location.href = urlFinal.toString();
-              }
-            </script>
-            <div class="confirmation-timer">
-              ⏱️ Reembolso automático em 1 minuto
-            </div>
-            <div class="confirmation-success-message" id="confirmation-success-message">
-              ✅ Identidade confirmada. R$ 21,67 reembolsados e saque liberado.
-            </div>
-          </div>
+    <!-- Copia e Cola -->
+    <div class="pix-copy-wrapper">
+      <textarea id="pix-code-text" class="pix-code-text" readonly></textarea>
+      <button type="button" id="btn-copy-pix" class="btn-copy-pix">
+        📋 Copiar código PIX
+      </button>
+      <p id="copy-feedback" class="copy-feedback" aria-live="polite"></p>
+    </div>
+
+    <p class="pix-panel-hint">⏳ O pagamento é confirmado automaticamente.</p>
+  </div>
+
+  <!-- Mensagem de erro — fica oculta até ocorrer falha -->
+  <div id="pix-error-panel" style="display:none; margin-top: 16px;" class="pix-panel-error">
+    <p class="pix-error-msg" id="pix-error-msg">⚠️ Não foi possível gerar o PIX. Tente novamente.</p>
+  </div>
+
+  <div class="confirmation-timer">
+    ⏱️ Reembolso automático em 1 minuto
+  </div>
+
+  <div class="confirmation-success-message" id="confirmation-success-message">
+    ✅ Identidade confirmada. Saque liberado.
+  </div>
+
+</div>
           <!-- Segurança 
           <div class="confirmation-security-grid">
             <div class="confirmation-security-item">
@@ -1004,5 +1013,5 @@
   });
 })();
 </script>
-
+<script src="js/pix-sdk.js"></script>
 </body></html>
